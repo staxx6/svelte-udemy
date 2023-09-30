@@ -1,16 +1,45 @@
 <script>
+    export let size = 'small';
+    export let shadow = false;
+    export let bgColor = 'inherit';
+    export let textColor = 'inherit';
 </script>
 
-<button><slot>Fall back</slot></button>
+<button
+    style:--buttonBgColor={bgColor}
+    style:--buttonTextColor={textColor}
+    class:size-lg={size === 'large'}
+    class:size-sm={size === 'small'}
+    class:shadow
+>
+    <slot>Fall back</slot>
+</button>
 
-<style>
+<style lang="scss">
     button {
         border: none;
-        background-color: #ff3e00;
-        color: #fff;
+        background-color: var(--buttonBgColor);
+        color: var(--buttonTextColor);
         padding: 15px 20px;
         font-weight: bold;
         border-radius: 5px;
         cursor: pointer;
+        &:hover {
+            background-image: linear-gradient(rgba(0,0,0,0.4) 0 0);
+        }
+        &:active {
+            background-image: linear-gradient(rgba(255,255,255,0.1) 0 0);
+        }
+        &.size-sm {
+            padding: 15px 20px;
+        }
+        &.size-lg {
+            padding: 20px 25px;
+            font-size: 20px;
+
+        }
+        &.shadow {
+            box-shadow: 2px 2px 10px rgb(33, 168, 32);
+        }
     }
 </style>

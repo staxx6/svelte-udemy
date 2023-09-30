@@ -2,7 +2,7 @@
     import Button from "./lib/Button.svelte";
 </script>
 
-<Button></Button>
+<Button size="large" shadow textColor="red"></Button>
 
 <style>
 </style>
